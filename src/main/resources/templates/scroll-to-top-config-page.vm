@@ -1,0 +1,103 @@
+## Config page
+#requireResource("com.caesarpro.confluence.ScrollToTop:ScrollToTop-config-resources")
+<html>
+<head>
+    <title>$i18n.getText("config-page.title")</title>
+    <meta name="decorator" content="atl.admin">
+</head>
+<body>
+
+    #set($checked = "")
+    #if($action.showButtonEverywhere) #set($checked = "checked") #end
+
+<form action="ConfigButton.action" method="post" class="aui">
+    <input type="hidden" name="editConfig" value="true">
+
+    <fieldset class="group">
+        <legend class="assistive">
+            <span>$i18n.getText("config-page.legend")</span>
+        </legend>
+
+        <div class="checkbox">
+            <input class="checkbox" type="checkbox" name="ShowButtonEverywhere" id="showButtonEverywhere" $checked>
+            <label for="ShowButtonEverywhere">$i18n.getText("config-page.ShowButtonEverywhere.label")</label>
+
+            <div class="description">$i18n.getText("config-page.ShowButtonEverywhere.description")</div>
+        </div>
+    </fieldset>
+
+    <h3>$i18n.getText("config-page.selectImage.title")</h3>
+    <fieldset class="group">
+        #set($scrollbtn1 = "checked='checked'")
+
+        #if($action.Scrollbtnstyle == "scrollbtn2") #set($scrollbtn2 = "checked='checked'") #end
+        #if($action.Scrollbtnstyle == "scrollbtn3") #set($scrollbtn3 = "checked='checked'") #end
+        #if($action.Scrollbtnstyle == "scrollbtn4") #set($scrollbtn4 = "checked='checked'") #end
+        #if($action.Scrollbtnstyle == "scrollbtn5") #set($scrollbtn5 = "checked='checked'") #end
+        #if($action.Scrollbtnstyle == "scrollbtn6") #set($scrollbtn6 = "checked='checked'") #end
+
+        <legend><span>$i18n.getText("config-page.selectImage.label")</span></legend>
+
+        <table border=0 class="select-btn-style-table">
+            <tr>
+                <td>
+                    <div class="radio">
+                        <input class="radio" type="radio" $!scrollbtn1 name="scrollbtnstyle" value="scrollbtn1">
+                        <label for="scrollbtn1">
+                            <div class="scrollbtn1"></div>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="radio">
+                        <input class="radio" type="radio" $!scrollbtn2 name="scrollbtnstyle" value="scrollbtn2">
+                        <label for="scrollbtn2">
+                            <div class="scrollbtn2"></div>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="radio">
+                        <input class="radio" type="radio" $!scrollbtn3 name="scrollbtnstyle" value="scrollbtn3">
+                        <label for="scrollbtn3">
+                            <div class="scrollbtn3"></div>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="radio">
+                        <input class="radio" type="radio" $!scrollbtn4 name="scrollbtnstyle" value="scrollbtn4">
+                        <label for="scrollbtn4">
+                            <div class="scrollbtn4"></div>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="radio">
+                        <input class="radio" type="radio" $!scrollbtn5 name="scrollbtnstyle" value="scrollbtn5">
+                        <label for="scrollbtn5">
+                            <div class="scrollbtn5"></div>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="radio">
+                        <input class="radio" type="radio" $!scrollbtn6 name="scrollbtnstyle" value="scrollbtn6">
+                        <label for="scrollbtn6">
+                            <div class="scrollbtn6"></div>
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <div class="buttons-container">
+        <div class="buttons">
+            <input class="aui-button aui-button-primary submit" type="submit" value="Save" id="d-save-btn1">
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

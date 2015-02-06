@@ -1,0 +1,44 @@
+#scroll-to-top-btn {
+    z-index: 999;
+    display: none;
+    position: fixed;
+
+    bottom: 20px;
+    right: 20px;
+}
+
+.scrollbtn1 {
+    background: url('images/scrolltotop-btn-1.png') no-repeat;
+    width: 52px;
+    height: 52px;
+}
+
+.scrollbtn2 {
+    background: url('images/scrolltotop-btn-2.png') no-repeat;
+    width: 52px;
+    height: 52px;
+}
+
+.scrollbtn3 {
+    background: url('images/scrolltotop-btn-3.png') no-repeat;
+    width: 52px;
+    height: 52px;
+}
+
+.scrollbtn4 {
+    background: url('images/scrolltotop-btn-4.png') no-repeat;
+    width: 80px;
+    height: 80px;
+}
+
+.scrollbtn5 {
+    background: url('images/scrolltotop-btn-5.png') no-repeat;
+    width: 40px;
+    height: 40px;
+}
+
+.scrollbtn6 {
+    background: url('images/scrolltotop-btn-6.png') no-repeat;
+    width: 52px;
+    height: 52px;
+}

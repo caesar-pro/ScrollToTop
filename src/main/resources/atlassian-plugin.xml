@@ -1,0 +1,60 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+
+    <!-- macro -->
+    <xhtml-macro name='ScrollToTop' class='com.caesarpro.confluence.macro.ScrollToTopMacro' key='ScrollToTop-macro'
+                 icon="/download/resources/com.caesarpro.confluence.ScrollToTop/images/macro-icon.png">
+        <description>This macro allows you to scroll to the top of the page by clicking on the button.</description>
+        <category name="navigation"/>
+        <parameters/>
+    </xhtml-macro>
+
+
+    <!-- xwork -->
+    <xwork key="actions" name="XWork Actions">
+        <package name="scrolltotop" extends="default" namespace="/admin/scrolltotop">
+            <default-interceptor-ref name="defaultStack" />
+
+            <action name="ConfigButton" class="com.caesarpro.confluence.action.ConfigButtonAction">
+                <result name="success" type="velocity">/templates/scroll-to-top-config-page.vm</result>
+            </action>
+        </package>
+    </xwork>
+
+
+    <!-- resources -->
+    <resource type="i18n" name="i18n" location="scroll-to-top"/> <!-- i18n resource -->
+    <resource type="download" name="images/" location="/images"/>
+
+    <web-resource name="ScrollToTop-config-resources" key="ScrollToTop-config-resources">
+        <resource type="download" name="scroll-to-top-btn-styles.css" location="css/scroll-to-top-btn-styles.css"/>
+        <resource type="download" name="scroll-to-top-config.css" location="css/scroll-to-top-config.css"/>
+    </web-resource>
+
+    <web-resource key="ScrollToTop-global-resources" name="ScrollToTop Web Resources">
+        <resource type="download" name="scroll-to-top-btn-styles.css" location="css/scroll-to-top-btn-styles.css"/>
+        <resource type="download" name="scroll-to-top.js" location="js/scroll-to-top.js"/>
+
+        <context>page</context>
+        <context>blogpost</context>
+        <context>space</context>
+    </web-resource>
+
+
+    <!-- rest -->
+    <rest key="scrolltotop-rest-api" path="/scrolltotop" version="1.0">
+        <description>Provides ScrollToTop rest services</description>
+    </rest>
+
+
+    <!-- import -->
+    <component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties"/>
+
+</atlassian-plugin>
