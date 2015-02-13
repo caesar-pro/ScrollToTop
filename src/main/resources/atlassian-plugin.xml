@@ -29,6 +29,15 @@
     </xwork>
 
 
+    <!--  web-item -->
+    <web-item key="scroll-to-top-link" name="Scroll to top configuration page" section="system.admin/administration" weight="17">
+        <label key="scroll-to-top-link-web-item-label"/>
+        <link>/admin/scrolltotop/ConfigButton.action</link>
+        <condition class="com.atlassian.confluence.plugin.descriptor.web.conditions.ConfluenceAdministratorCondition"/>
+        <description>Scroll to top configuration page</description>
+    </web-item>
+
+
     <!-- resources -->
     <resource type="i18n" name="i18n" location="scroll-to-top"/> <!-- i18n resource -->
     <resource type="download" name="images/" location="/images"/>
@@ -56,5 +65,9 @@
 
     <!-- import -->
     <component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties"/>
+
+    <component key="BandanaService" name="BandanaService" class="com.caesarpro.confluence.util.BandanaServiceImpl">
+        <interface>com.caesarpro.confluence.util.BandanaService</interface>
+    </component>
 
 </atlassian-plugin>

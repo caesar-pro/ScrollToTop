@@ -7,15 +7,22 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.caesarpro.confluence</groupId>
     <artifactId>ScrollToTop</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <organization>
-        <name>Caesar pro</name>
+        <name>Caesar Pro</name>
     </organization>
 
-    <name>ScrollTop</name>
+    <name>ScrollToTop</name>
     <description>Functions to scroll to the top of the page by clicking on the button</description>
     <packaging>atlassian-plugin</packaging>
+
+    <properties>
+        <!-- Compatible with Confluence 5.3.1 - 5.6.6  -->
+        <confluence.version>5.3.1</confluence.version>
+        <confluence.data.version>5.3.1</confluence.data.version>
+        <amps.version>5.0.3</amps.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -66,11 +73,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <!-- Compatible with Confluence 5.3.1 - 5.6.6  -->
-        <confluence.version>5.6.6</confluence.version>
-        <confluence.data.version>5.6.6</confluence.data.version>
-        <amps.version>5.0.3</amps.version>
-    </properties>
 </project>

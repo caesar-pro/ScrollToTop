@@ -1,7 +1,7 @@
 package com.caesarpro.confluence.rest;
 
-import com.atlassian.bandana.BandanaManager;
 import com.caesarpro.confluence.util.BandanaData;
+import com.caesarpro.confluence.util.BandanaService;
 import com.google.gson.Gson;
 
 import javax.ws.rs.GET;
@@ -12,37 +12,29 @@ import javax.ws.rs.core.Response;
 import java.util.HashMap;
 import java.util.Map;
 
-import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 /*
  *  Caesar pro
  */
 @Path("/config")
 public class ConfigRest {
-    private final BandanaManager bandanaManager;
+    private final BandanaService bandanaService;
 
-    public ConfigRest(BandanaManager bandanaManager) {
-        this.bandanaManager = bandanaManager;
+    public ConfigRest(BandanaService bandanaService) {
+        this.bandanaService = bandanaService;
     }
 
     @GET /*     /rest/scrolltotop/1.0/config/showButtonEverywhere    */
     @Path("showButtonEverywhere")
-    @Produces({TEXT_PLAIN})
+    @Produces({APPLICATION_JSON})
     public Response showButtonEverywhere() {
         Map<String, String> params = new HashMap<>();
 
-        Object showButtonEverywhereObject = bandanaManager.getValue(BandanaData.bandanaContext, BandanaData.BANDANA_SHOW_BUTTON_EVERYWHERE);
-        if (showButtonEverywhereObject == null) {
-            bandanaManager.setValue(BandanaData.bandanaContext, BandanaData.BANDANA_SHOW_BUTTON_EVERYWHERE, String.valueOf(true));
-            showButtonEverywhereObject = true;
-        }
+        Object showButtonEverywhereObject = bandanaService.getBoolean(BandanaData.bandanaContext, BandanaData.BANDANA_SHOW_BUTTON_EVERYWHERE, true);
         params.put("showButtonEverywhere", String.valueOf(showButtonEverywhereObject));
 
-        Object scrollButtonStyleObject = bandanaManager.getValue(BandanaData.bandanaContext, BandanaData.BANDANA_BUTTON_STYLE);
-        if (scrollButtonStyleObject == null) {
-            bandanaManager.setValue(BandanaData.bandanaContext, BandanaData.BANDANA_BUTTON_STYLE, "scrollbtn1");
-            scrollButtonStyleObject = "scrollbtn1";
-        }
+        Object scrollButtonStyleObject = bandanaService.getString(BandanaData.bandanaContext, BandanaData.BANDANA_BUTTON_STYLE, "scrollbtn1");
         params.put("scrollButtonStyle", String.valueOf(scrollButtonStyleObject));
 
         return Response.ok(new Gson().toJson(params), MediaType.APPLICATION_JSON).build();
